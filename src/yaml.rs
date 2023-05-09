@@ -3,7 +3,6 @@ use std::path::PathBuf;
 use home::home_dir;
 use serde_yaml;
 use std::collections::HashMap;
-use prettyprint::PrettyPrinter;
 
 #[derive(Debug)]
 pub struct Config {
@@ -34,9 +33,9 @@ impl Config {
                         self.yaml_string = config_string;
                         match serde_yaml::from_str(&self.yaml_string){
                             Ok(yaml_data) => {
-                                println!("Yaml data: {:?}", yaml_data);
+                                // println!("Yaml data: {:?}", yaml_data);
                                 self.yaml_data = yaml_data;
-                                self.print_yaml_data();
+                                println!("{:#?}", self.yaml_data);
                             },
                             Err(e) => {
                                 println!("Failed to parse yaml: {:?}", e);
@@ -44,7 +43,7 @@ impl Config {
                         }
 
                     },
-                    Err(e) => {
+                    Err(_e) => {
                         println!("Config file not found, creating...");
                         let config_string = include_str!("template/default_profile.yaml");
                         if let Err(e) = std::fs::write(&self.path, config_string) {
@@ -56,10 +55,6 @@ impl Config {
             },
             None => { panic!("Failed to locate user's home directory, please use a custom config path");}
         }
-    }
-    
-    pub fn print_yaml_data(&self) {
-        println!("{:#?}", self.yaml_data);
     }
 }
 

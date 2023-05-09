@@ -1,4 +1,5 @@
 mod yaml;
+mod shell;
 use std::path::PathBuf;
 use clap::{Parser, Subcommand};
 
@@ -34,6 +35,16 @@ enum Commands {
 fn main() {
 
     let mut config = yaml::get_config();
+
+    match shell::command("aws --version", 3){
+        Ok(output) => {
+            println!("output: \n{output}" );
+        },
+        Err(e) => {
+            println!("error: \n{e}");
+        }
+    }
+
     let cli = Cli::parse();
 
     // You can check the value provided by positional arguments, or option arguments
