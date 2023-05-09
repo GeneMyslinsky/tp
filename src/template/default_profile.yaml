@@ -1,0 +1,26 @@
+accounts:
+  account1:
+    account: '123412314124123'
+    aws_access_key_id: ZZZZZZZZZZZZXCZX
+    aws_secret_access_key: qWEQEWQWEQWEqewqewqads/ASDAS
+    username: gene.myslinsky
+  account2:
+    account: '123412314124124'
+    aws_access_key_id: AKAKAKALLSLLLIISIDIO
+    aws_secret_access_key: AZLLAOOOOSDADOAODOODSs
+    username: test-user
+profiles:
+  isw-main:
+    account: '3453453453453453453'
+    kube: kube1.config
+    regions: ["us-east-1"]
+    # role: OpsAccountAccessRole
+    source: account1
+  cc-dev:
+    account: '5675675675675675675675'
+    kube: kube2.config
+    regions: ["us-east-1","us-east-2","us-west-1","us-west-2","eu-west-1","eu-central-1","ap-northeast-1","ap-southeast-2"]
+    role: OpsAccountAccessRole
+    source: account2
+settings:
+  key_age: 12 #in hours

@@ -8,3 +8,10 @@ edition = "2021"
 [dependencies]
 home = "0.5.5"
 clap = { version = "4.2.7", features = ["derive"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_yaml = "0.9"
+prettyprint = "0.8.1"
+# [bin]
+
+# name = "yaml"
+# path = "src/yaml.rs"
